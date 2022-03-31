@@ -1044,7 +1044,7 @@ function affiche_choix_niveau()
 		}
 	}
 	
-	ctx.fillStyle='orange';
+	ctx.fillStyle='244';
 	tracequadrilataire_plein(0,0,0,y_case_niveau[0],canvas.width,y_case_niveau[0],canvas.width,0);
 	tracequadrilataire_plein(0,y_case_niveau[0]+hauteur_case_niveau,0,y_case_niveau[3],canvas.width,y_case_niveau[3],canvas.width,y_case_niveau[0]+hauteur_case_niveau);
 	tracequadrilataire_plein(0,y_case_niveau[3]+hauteur_case_niveau,0,y_case_niveau[6],canvas.width,y_case_niveau[6],canvas.width,y_case_niveau[3]+hauteur_case_niveau);
@@ -1083,7 +1083,146 @@ function affiche_choix_niveau()
 		tracequadrilataire(x_3_boutons[lindice],y_3_boutons,x_3_boutons[lindice]+largeur_case_niveau,y_3_boutons,x_3_boutons[lindice]+largeur_case_niveau,y_3_boutons+hauteur_3_boutons,x_3_boutons[lindice],y_3_boutons+hauteur_3_boutons);
 	}
 	
+	trace_teub_coin(canvas.width/5,y_case_niveau[0]/2,canvas.width/20);
 
+}
+
+function trace_teub_coin(position_coin_x,position_coin_y,rayon_coincoin)
+{
+	/*
+	var temps_depuis_deb=maintenant-state_start_time;
+	var lecosinus=Math.cos(temps_depuis_deb*4);
+	var lesinus=Math.sin(temps_depuis_deb*4);
+	var decalage=0;
+	var face='green';
+	var signe=0;
+	demi_epaisseur_piece=rayon_coincoin/3;
+	if (lecosinus<0)
+	{
+		face = 'orange';
+		decalage=lesinus*demi_epaisseur_piece;
+	}
+	else
+	{
+		face = 'green';
+		decalage=-lesinus*demi_epaisseur_piece;
+	}
+	
+    ctx.translate(position_coin_x+decalage,position_coin_y);
+	ctx.scale(lecosinus, 1);
+	
+	
+	ctx.beginPath();
+	ctx.lineTo(0,rayon_coincoin);
+    ctx.lineTo(-decalage*2/lecosinus,rayon_coincoin);
+    if (lesinus<0)
+	{
+    ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,-Math.PI/2,Math.PI/2,true);
+    }
+    else
+	{
+    ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,-Math.PI/2,Math.PI/2,false);
+    }
+    ctx.lineTo(-decalage*2/lecosinus,-rayon_coincoin);
+    ctx.lineTo(0,-rayon_coincoin);
+    ctx.closePath();
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    ctx.fillStyle = 'black';
+    ctx.stroke();
+    ctx.fillStyle = face;
+    tracerond(0,0,rayon_coincoin);
+	ctx.scale(1/lecosinus, 1);
+    ctx.translate(-position_coin_x-decalage,-position_coin_y);
+    */
+    
+    
+	var temps_depuis_deb=maintenant-state_start_time;
+	var lecosinus=Math.cos(temps_depuis_deb*4);
+	var lesinus=Math.sin(temps_depuis_deb*4);
+	var decalage=0;
+	var face='green';
+	var signe=0;
+	demi_epaisseur_piece=rayon_coincoin/3;
+	if (lecosinus<0)
+	{
+		decalage=lesinus*demi_epaisseur_piece;
+	}
+	else
+	{
+		decalage=-lesinus*demi_epaisseur_piece;
+	}
+	
+    ctx.translate(position_coin_x+decalage,position_coin_y);
+	ctx.scale(lecosinus, 1);
+	
+	
+    ctx.beginPath();
+	ctx.lineTo(0,rayon_coincoin);
+    ctx.lineTo(-decalage*2/lecosinus,rayon_coincoin);
+	if (lesinus<0)
+	{
+    ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,Math.PI/2,Math.PI*5/6,false);
+    }
+    else
+    {
+    	ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,Math.PI/2,Math.PI/6,true);
+    }
+    ctx.lineTo(-decalage*2/lecosinus,rayon_coincoin/2);
+    ctx.lineTo(0,rayon_coincoin/2);
+    ctx.closePath();
+    ctx.fillStyle = 'orange';
+    ctx.fill();
+    ctx.beginPath();
+	ctx.lineTo(0,rayon_coincoin/2);
+    ctx.lineTo(-decalage*2/lecosinus,rayon_coincoin/2);
+	if (lesinus<0)
+	{
+    ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,Math.PI*5/6,Math.PI*7/6,false);
+    }
+    else
+    {
+    	ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,Math.PI/6,-Math.PI/6,true);
+    }
+   ctx.lineTo(-decalage*2/lecosinus,-rayon_coincoin/2);
+    ctx.lineTo(0,-rayon_coincoin/2);
+    ctx.closePath();
+   ctx.fillStyle = '#fd0';
+    ctx.fill();
+    ctx.beginPath();
+	ctx.lineTo(0,-rayon_coincoin/2);
+    ctx.lineTo(-decalage*2/lecosinus,-rayon_coincoin/2);
+	if (lesinus<0)
+	{
+    ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,Math.PI*7/6,Math.PI*9/6,false);
+    }
+    else
+    {
+    	ctx.arc(-decalage*2/lecosinus,0,rayon_coincoin,-Math.PI/6,-Math.PI*3/6,true);
+    }
+   ctx.lineTo(-decalage*2/lecosinus,-rayon_coincoin);
+    ctx.lineTo(0,-rayon_coincoin);
+    ctx.closePath();
+   ctx.fillStyle = 'yellow';
+    ctx.fill();
+   // ctx.strokeStyle = 'black';
+    //ctx.stroke();
+    ctx.fillStyle = '#fd0';
+    tracerond(0,0,rayon_coincoin);
+    ctx.fillStyle = 'orange';
+    if (lecosinus<0)
+	{
+		tracerond(-rayon_coincoin*0.32,rayon_coincoin/2,rayon_coincoin/3);
+		tracerond(rayon_coincoin*0.32,rayon_coincoin/2,rayon_coincoin/3);
+		tracerond(0,-rayon_coincoin/2,rayon_coincoin/3.5);
+		tracequadrilataire_plein(-rayon_coincoin/3.8,rayon_coincoin/2,rayon_coincoin/3.8,rayon_coincoin/2,rayon_coincoin/3.8,-rayon_coincoin/2,-rayon_coincoin/3.8,-rayon_coincoin/2);
+	}
+	else
+	{
+		tracequadrilataire_plein(-rayon_coincoin/3,rayon_coincoin/2,rayon_coincoin/3,rayon_coincoin/2,rayon_coincoin/3,-rayon_coincoin/2,-rayon_coincoin/3,-rayon_coincoin/2.5);
+	}
+	ctx.scale(1/lecosinus, 1);
+    ctx.translate(-position_coin_x-decalage,-position_coin_y);
 }
 
 function RAZ_niveau()
